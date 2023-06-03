@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'relationships/followings'
   get 'relationships/followers'
-  devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root :to =>"homes#top"
   get "home/about"=>"homes#about"
   get "search" => "searches#search"
+  get 'messages/:id' => 'messages#message', as: 'message'
+  post 'messages' => 'messages#create', as: 'messages'
 
   resources :books, only: [:index,:show,:edit,:create,:destroy,:update] do
     resources :book_comments, only: [:create, :destroy]

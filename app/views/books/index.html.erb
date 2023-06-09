@@ -9,10 +9,15 @@
     </div>
     <div class='col-md-8 offset-md-1'>
       <h2>Books</h2>
-      <%= link_to '新しい順', books_path(latest: "true") %>
-      |<%= link_to '古い順', books_path(old: "true") %>
-      |<%= link_to '評価の高い順', books_path(star_count: "true") %>
-      |<%= link_to 'いいねの多い順（過去1週間）', books_path %>
+      <div class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">投稿順 <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to '新しい順', books_path(latest: "true") %></li>
+          <li><%= link_to '古い順', books_path(old: "true") %></li>
+          <li><%= link_to '評価の高い順', books_path(star_count: "true") %></li>
+          <li><%= link_to 'いいねの多い順（過去1週間）', books_path %></li>
+        </ul>
+      </div>
       <%= render 'index', books: @books%>
     </div>
   </div>
